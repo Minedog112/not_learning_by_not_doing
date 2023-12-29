@@ -22,3 +22,12 @@ def check_location(folder):
         print(f"check_location=true")
     else:
         print(f"check_location=false")
+#get category name
+def category_name():
+    id = create_or_read_id_file()
+    username = os.getlogin()
+    category_name = f"{id}-{username}"
+    return category_name
+#execute cmd commands
+def exe_cmd(cmd):
+    return subprocess.check_output(cmd, shell=True).decode()
