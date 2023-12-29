@@ -33,14 +33,14 @@ Ziel ist es eine RAT(Remote Access Trojaner) selbststaendig zu entwickeln
 - [ ] replace copied crypto adresses
 - [ ] Anti-VM
 - [ ] Anti-Debug
-- [ ] 
+- [ ] help command
 ### keylogger
 - [ ] log every key
 - [ ] email erkennung
 - [ ] domain erkennung
 - [ ] keywords
 ### beim starten
-- [ ] ID zuweisen
+- [X] ID zuweisen
 - [ ] in sicheren ordner kopieren.
 - [ ] PC benutzernamen zu ID zu HWID zuweisen
 - [ ] gewisse stealer ausloesen
