@@ -27,7 +27,7 @@ async def on_ready():
     channels = await guild.fetch_channels()
     existing_categories = [channel for channel in channels if channel.type == ChannelType.GUILD_CATEGORY]
 
-    # Erstelle die Kategorie, wenn sie nicht existiert
+    # create catagory in discord
     category = None
     if category_name not in [c.name for c in existing_categories]:
         category = await guild.create_category(category_name)
@@ -36,7 +36,7 @@ async def on_ready():
         category = next((c for c in existing_categories if c.name == category_name), None)
         print(f"Kategorie {category_name} existiert bereits.")
 
-    # Erstelle die Channels in der Kategorie
+    # create channels
     if category:
         await category.create_text_channel("info")
         await category.create_text_channel("main")
