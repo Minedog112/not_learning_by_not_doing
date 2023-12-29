@@ -1,6 +1,7 @@
 # not_learning_by_not_doing
 ## Beschreibung
-Ziel ist es eine RAT(Remote Access Trojaner) selbststaendig zu entwickeln
+Ziel ist es eine RAT(Remote Access Trojaner) selbststaendig zu entwickeln.
+for learning purposes only
 ## Features
 ### Grundlagen
 - [ ] cmd
