@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------------------------------------------------------------------
 # This is a RAT(Remote Access Trojaner)
-# Author: Deltatoolbox aka TornLotus
+# Author: Deltatoolbox aka TornLotus and Minedog
 # Contact: Discord: tornlotus
 # Lizenz: MIT License
 # Github: https://github.com/Deltatoolbox/not_learning_by_not_doing
