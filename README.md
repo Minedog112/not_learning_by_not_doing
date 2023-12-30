@@ -4,7 +4,7 @@ Ziel ist es eine RAT(Remote Access Trojaner) selbststaendig zu entwickeln.
 for learning purposes only
 ## Features
 ### Grundlagen
-- [ ] cmd
+- [X] cmd
 - [ ] powershell
 - [ ] screenshot
 - [ ] shutdown, restart
@@ -43,7 +43,7 @@ for learning purposes only
 ### beim starten
 - [X] ID zuweisen
 - [ ] in sicheren ordner kopieren.
-- [ ] PC benutzernamen zu ID zu HWID zuweisen
+- [X] PC benutzernamen zu ID zu HWID zuweisen
 - [ ] gewisse stealer ausloesen
 - [ ] autorun
 ### troll funktionen
