@@ -5,17 +5,21 @@ from interactions import slash_command, SlashContext
 from interactions import OptionType, slash_option
 from interactions import Client, Intents, listen
 from interactions import ChannelType
-import json
 import os
 #my imports
 from modules import basic_functions as functions
+
 #local settings
 ctx = SlashContext
-#check if the file is in the final folder   
-functions.check_location(functions.read_config["location"])
-#create a ID on start 
+
+# Check if the file is in the final folder
+config = functions.read_config()
+functions.check_location(config["location"])
+
+# Create a ID on start 
 functions.create_or_read_id_file()
 print(functions.create_or_read_id_file())
+
 #discord set intents
 bot = Client(intents=Intents.DEFAULT)
 
@@ -23,11 +27,11 @@ bot = Client(intents=Intents.DEFAULT)
 async def on_ready():
     category_name = functions.category_name()
 
-    guild = bot.get_guild(functions.read_config["guild_id"])  
+    guild = bot.get_guild(config["guild_id"])  
     channels = await guild.fetch_channels()
     existing_categories = [channel for channel in channels if channel.type == ChannelType.GUILD_CATEGORY]
 
-    # create catagory in discord
+    # create category in discord
     category = None
     if category_name not in [c.name for c in existing_categories]:
         category = await guild.create_category(category_name)
@@ -45,9 +49,5 @@ async def on_ready():
         # save all channel ids
         functions.save_ids(category.id, info_channel.id, main_channel.id, spam_channel.id)
 
-
-
-
-
 #start bot
-bot.start(functions.read_config["token"])
+bot.start(config["token"])
