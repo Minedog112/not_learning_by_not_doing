@@ -1,5 +1,9 @@
+#normal import
 import os
 import random
+import subprocess
+import json
+
 #create or read device id
 def create_or_read_id_file():
     id_file_path = "ids.txt"
@@ -31,3 +35,27 @@ def category_name():
 #execute cmd commands
 def exe_cmd(cmd):
     return subprocess.check_output(cmd, shell=True).decode()
+def save_ids(category_id, info_channel_id, main_channel_id, spam_channel_id):
+    # get divce id
+    device_id = create_or_read_id_file()
+    #set config content
+    config = {
+        "device_id": device_id,
+        "category_id": category_id,
+        "info_channel_id": info_channel_id,
+        "main_channel_id": main_channel_id,
+        "spam_channel_id": spam_channel_id
+    }
+    #wirte conifg content to config_custom.json
+    with open("config_custom.json", "w") as file:
+        json.dump(config, file, indent=4)
+#function to get ids("spam_channel_id","main_channel_id","info_channel_id","category_id","device_id")
+def get_ids():
+    with open("config_custom.json", "r") as file:
+        config = json.load(file)
+    return config
+#function to get configs
+def read_config():
+    with open("config.json", "r") as file:
+        return json.load(file)
+
